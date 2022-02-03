@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Benutzer {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Firma</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for product in products %}
+                <tr>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.company.name}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div> 
+    </div>
+{% endblock %}

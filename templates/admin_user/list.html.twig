@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Benutzer {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>E-Mail</th>
+                    <th>Firma</th>
+                    <th>Actionen</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.company.name}}</td>
+                    <td><a href="{{ path('product_add', {'company' : user.company.id}) }}" >Produkt anlegen</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div> 
+    </div>
+{% endblock %}
