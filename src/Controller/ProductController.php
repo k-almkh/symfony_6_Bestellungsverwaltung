@@ -35,6 +35,7 @@ class ProductController extends AbstractController
             $this->em->persist($product);
             $this->em->flush();
 
+            $this->addFlash('success', 'Das Produckt wurde erfolgreich angelegt');
             return $this->redirectToRoute('product_list');
         }
 
