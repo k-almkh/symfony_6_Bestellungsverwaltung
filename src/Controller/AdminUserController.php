@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,7 +17,7 @@ use Symfony\Component\Validator\Constraints\Regex;
 #[Route('/admin')]
 class AdminUserController extends AbstractController
 {
-    private  $em; 
+    private EntityManagerInterface $em; 
     public function __construct( EntityManagerInterface $em)
     {
         $this->em = $em;
@@ -44,8 +45,10 @@ class AdminUserController extends AbstractController
     #[Route("/users",name:"admin_user_list")]
     public function list(): Response
     {
+        /** @var UserRepository $userRepository */
+        $userRepository = $this->em->getRepository(User::class);
         return $this->render('admin_user/list.html.twig', [
-            'users' => $this->em->getRepository(User::class)->findAll(),
+            'users' => $userRepository->findAll(),
         ]);
     }
 }

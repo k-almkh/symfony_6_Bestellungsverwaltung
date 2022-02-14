@@ -14,27 +14,28 @@ class Order
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    /** @phpstan-ignore-next-line*/
+    private int $id;
 
     #[ORM\Column(type: 'datetime')]
     private $created;
 
     #[ORM\Column(type: 'boolean')]
-    private $status;
+    private bool $status;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $sendImage;
+    private string $sendImage;
 
     #[ORM\OneToMany(mappedBy: 'orderEntity', targetEntity: OrderLineItem::class, orphanRemoval: true)]
-    private $orderLineItems;
+    private Collection $orderLineItems;
 
     #[ORM\OneToOne(targetEntity: Recipient::class, cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private $recipient;
+    private Collection $recipient;
 
     #[ORM\ManyToOne(targetEntity: Company::class, inversedBy: 'orders')]
     #[ORM\JoinColumn(nullable: false)]
-    private $company;
+    private Collection $company;
 
 
     public function __construct()

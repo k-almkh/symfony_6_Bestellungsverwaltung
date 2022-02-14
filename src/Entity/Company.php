@@ -13,19 +13,21 @@ class Company
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private $id;
+    /** @phpstan-ignore-next-line*/
+    private int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private string $name;
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Product::class, orphanRemoval: true)]
-    private $products;
+  // #[Collection(Collection<int,  targetEntity: Product::class> $products )]
+    private Collection $products;
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: Order::class, orphanRemoval: true)]
-    private $orders;
+    private Collection  $orders;
 
     #[ORM\OneToMany(mappedBy: 'company', targetEntity: User::class)]
-    private $users;
+    private Collection $users;
 
     public function __construct()
     {
