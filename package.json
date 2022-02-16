@@ -25,6 +25,8 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.11.2",
+        "axios": "^0.26.0",
+        "vuex": "^4.0.2",
         "webpack": "^5.66.0"
     }
 }
