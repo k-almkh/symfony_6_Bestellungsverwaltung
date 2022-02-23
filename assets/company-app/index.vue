@@ -6,7 +6,20 @@
 
 <script>
     export default {
-        name: 'Company-App-Index'
+        name: 'Company-App-Index',
+        date: function () {
+            return {
+                companies: [],
+            };
+        },
+        mounted() {
+            this.$store.dispatch('loadCompanies')
+                .then( companies => {
+                    console.log(companies);
+                    this.companies = companies;
+            });
+        }
+
     }  
 
 </script>

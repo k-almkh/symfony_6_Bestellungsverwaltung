@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -16,6 +17,7 @@ class Product
     /** @phpstan-ignore-next-line*/
     private $id;
 
+    #[Groups(["product","company"])]
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 

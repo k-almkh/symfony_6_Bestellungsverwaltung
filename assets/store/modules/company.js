@@ -6,12 +6,24 @@ export default{
             companies:[],
         }
     },
-    mutations:{
-
+    mutations: {
+        setCompanies(state, companies) {
+            state.companies = companies;
+        },
     },
-    actions:{
+    actions: {
+        loadCompanies({commit, state}) {
+            return new Promise((resolve, reject) => {
+                axios.get('/api/companies')
+                    .then((response) => {
+                        commit('setCompanies', response.data);
+                        resolve(state.companies);
+                    });
 
+            });
+        },
     },
+
     getters:{
         getCompanies(state){
             return state.companies;
