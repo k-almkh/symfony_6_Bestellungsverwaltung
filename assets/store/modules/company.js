@@ -16,7 +16,8 @@ export default{
             return new Promise((resolve, reject) => {
                 axios.get('/api/companies')
                     .then((response) => {
-                        commit('setCompanies', response.data);
+                        console.log(JSON.parse(response.data));
+                        commit('setCompanies', JSON.parse(response.data));
                         resolve(state.companies);
                     });
 

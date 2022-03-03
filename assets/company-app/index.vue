@@ -1,29 +1,28 @@
 <template>
- <div >
-     <h1>Hallo Company</h1>
- </div>
+    <div>
+        <h1>Firmenübersicht</h1>
+        <company-table-view :companies="companies"></company-table-view>
+    </div>
 </template>
 
 <script>
-    export default {
-        name: 'Company-App-Index',
-        date: function () {
-            return {
-                companies: [],
-            };
-        },
-        mounted() {
-            this.$store.dispatch('loadCompanies')
-                .then( companies => {
-                    console.log(companies);
-                    this.companies = companies;
+import CompanyTableView from "./components/CompanyTableView";
+
+export default {
+    name: 'Company-App-Index',
+    components: {
+        CompanyTableView,
+    },
+    data: function () {
+        return {
+            companies: [],
+        };
+    },
+    mounted() {
+        this.$store.dispatch('loadCompanies')
+            .then( companies => {
+                this.companies = companies;
             });
-        }
-
-    }  
-
+    }
+};
 </script>
-
-<style>
-
-</style>
