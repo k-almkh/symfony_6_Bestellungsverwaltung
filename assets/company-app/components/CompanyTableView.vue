@@ -28,7 +28,7 @@ export default {
         companies: {
             type: Array,
             required: true,
-            default: () => [],
+            // default: () => [],
         },
 
     },

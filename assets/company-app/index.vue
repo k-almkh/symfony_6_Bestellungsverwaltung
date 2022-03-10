@@ -2,6 +2,8 @@
     <div>
         <h1>Firmenübersicht</h1>
         <company-table-view :companies="companies"></company-table-view>
+        <router-link to="/admin/companies">Home</router-link>
+        <router-view />
     </div>
 </template>
 
